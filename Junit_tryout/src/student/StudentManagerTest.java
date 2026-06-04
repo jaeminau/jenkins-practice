@@ -47,5 +47,17 @@ class StudentManagerTest {
         studentManager.removeStudent("홍길동");
         assertFalse(studentManager.hasStudent("홍길동"));
     }
+    
+    @Test
+    @Order(5)
+    void testRemoveOneStudentDoesNotAffectOtherStudents() {
+        studentManager.addStudent("성춘향");
+        studentManager.addStudent("이몽룡");
+
+        studentManager.removeStudent("성춘향");
+
+        assertFalse(studentManager.hasStudent("성춘향"));
+        assertTrue(studentManager.hasStudent("이몽룡"));
+    }
 }
 
