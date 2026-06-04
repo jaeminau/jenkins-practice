@@ -59,5 +59,18 @@ class StudentManagerTest {
         assertFalse(studentManager.hasStudent("성춘향"));
         assertTrue(studentManager.hasStudent("이몽룡"));
     }
+    
+    @Test
+    @Order(6)
+    void testCanReAddStudentAfterRemoval() {
+        studentManager.addStudent("임꺽정");
+        assertTrue(studentManager.hasStudent("임꺽정"));
+
+        studentManager.removeStudent("임꺽정");
+        assertFalse(studentManager.hasStudent("임꺽정"));
+
+        studentManager.addStudent("임꺽정");
+        assertTrue(studentManager.hasStudent("임꺽정"));
+    }
 }
 
